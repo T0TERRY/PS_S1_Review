@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Skills 401 - Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .search-box {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .chapters {
+            padding: 20px;
+        }
+
+        .chapter {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .chapter:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .chapter-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .chapter-header:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+        }
+
+        .chapter-title {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .chapter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: white;
+        }
+
+        .chapter-content.active {
+            max-height: 5000px;
+        }
+
+        .chapter-body {
+            padding: 20px;
+        }
+
+        .summary {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .summary h3 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .term {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .term:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .term-name {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .term-definition {
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .example {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 8px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .example-label {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .example-text {
+            color: #856404;
+        }
+
+        .key-points {
+            background: #d1f2eb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00bfa5;
+        }
+
+        .key-points h4 {
+            color: #00897b;
+            margin-bottom: 10px;
+        }
+
+        .key-points ul {
+            margin-left: 20px;
+        }
+
+        .key-points li {
+            margin-bottom: 8px;
+            color: #00695c;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+
+            .chapter-title {
+                font-size: 1.1em;
+            }
+
+            .chapters {
+                padding: 10px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        .framework-box {
+            background: #f3e5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .framework-item {
+            margin-bottom: 10px;
+        }
+
+        .framework-item strong {
+            color: #7b1fa2;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-size: 1.2em;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📚 People Skills 401</h1>
+            <p>Complete Study Guide - Academic Year 2025-2026</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Lecturer: SEA Boungseng (SBS)</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">19</div>
+                <div class="stat-label">Chapters</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Key Terms</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Coverage</div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search for terms, concepts, or examples...">
+        </div>
+
+        <div class="chapters" id="chaptersContainer">
+            <!-- Chapter 1 -->
+            <div class="chapter" data-chapter="1">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 1: Self-Awareness 🪞</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Self-awareness means knowing yourself - your personality, emotions, behaviors, and how you affect others. It's the foundation of good people skills.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Self-Awareness</div>
+                            <div class="term-definition">Understanding your own personality, emotions, desires, and reasons for acting. Knowing how your behavior affects yourself and others.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A teacher realizes they become impatient when the classroom is noisy, so they practice calming down before responding to students.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Think-Feel-Do Framework</div>
+                            <div class="term-definition">A simple way to understand learning and working with people by dividing it into three connected parts:</div>
+                            <div class="framework-box">
+                                <div class="framework-item"><strong>Think</strong> (Cognitive) - Being aware of what you're doing and thinking carefully, not just following routines</div>
+                                <div class="framework-item"><strong>Feel</strong> (Emotional) - Recognizing that your feelings affect how you learn and work</div>
+                                <div class="framework-item"><strong>Do</strong> (Behavioral) - Taking action and practicing skills, applying knowledge</div>
+                            </div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Student giving a presentation: <strong>Think</strong> - Plans what to say clearly. <strong>Feel</strong> - Notices feeling nervous. <strong>Do</strong> - Practices in front of a mirror to build confidence.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Unconditional Positive Regard</div>
+                            <div class="term-definition">Accepting and respecting others without judging them, even when they make mistakes.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A coach supports a player after a poor performance and focuses on improvement rather than blame.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Triggers</div>
+                            <div class="term-definition">Events or situations that cause strong emotional reactions, often connected to past experiences.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Someone feels angry when criticized because of negative experiences in the past. After recognizing this trigger, they work on responding calmly.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Blind Spots</div>
+                            <div class="term-definition">Behaviors or traits we don't notice in ourselves, but others can see clearly.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A speaker doesn't realize they interrupt others during discussions until classmates point it out.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Mixed Messages</div>
+                            <div class="term-definition">When spoken words don't match body language or tone of voice, causing confusion.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A person says they're happy to help but sounds annoyed, making others unsure how they really feel.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Transference</div>
+                            <div class="term-definition">When feelings from past relationships affect how we react to people in the present.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An employee feels nervous around a supervisor because they remind them of a very strict teacher from the past.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. The Johari Window</div>
+                            <div class="term-definition">A model that explains what we know about ourselves and what others know about us, including open, hidden, blind, and unknown areas.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">After asking for feedback, a student learns that others see them as confident even though they thought they appeared shy.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="chapter" data-chapter="2">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 2: Time Management ⏰</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Time management is organizing and planning how to use your time effectively. It's a learnable skill that helps you work smarter, meet deadlines, and reduce stress.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Effectiveness</div>
+                            <div class="term-definition">Achieving your goals and focusing on what matters most.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student studies the most important topics for an exam rather than minor details, getting a higher score.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Efficiency</div>
+                            <div class="term-definition">Completing tasks using the least time and resources, doing things quickly and easily.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Using keyboard shortcuts to format a document faster, finishing it in half the usual time.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. The Three-Minute Rule</div>
+                            <div class="term-definition">If a task takes three minutes or less, do it immediately instead of postponing it.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Replying to a short email right away instead of leaving it in the inbox.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. The Worst-First Rule</div>
+                            <div class="term-definition">Do the hardest or least pleasant tasks first to avoid procrastination.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student finishes their most difficult assignment in the morning, feeling less stressed the rest of the day.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Time and Energy</div>
+                            <div class="term-definition">Managing time also means managing energy, as some tasks require more focus and effort than others.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An employee does creative tasks in the morning when energy is highest and routine tasks in the afternoon.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Work/Rest Ratio</div>
+                            <div class="term-definition">Balancing work and rest prevents burnout. Common method: 50 minutes work + 10 minutes rest.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A writer works for 45 minutes, then takes a 15-minute break to recharge before continuing.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. The Expanding Workload (Parkinson's Law)</div>
+                            <div class="term-definition">Work tends to expand to fill the available time, which can reduce efficiency.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A report due in three hours may take the full time even though it could be finished in two hours.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. Timing</div>
+                            <div class="term-definition">People have different energy peaks; knowing your best times helps plan tasks more effectively.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student schedules difficult study topics for the afternoon when they feel most alert, and easier tasks for the morning.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">9. The Best Person for the Job</div>
+                            <div class="term-definition">Assigning tasks to people who are good at them and enjoy them improves motivation and productivity.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">In a team, a member who excels at data analysis handles the numbers, while another who enjoys writing creates the report.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="chapter" data-chapter="3">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 3: Stress Management 😰</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Stress is NOT the same as pressure. Stress is a person's negative response to inappropriate pressure levels. Too much OR too little pressure causes stress, but appropriate pressure can be motivating.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Key Understanding</h4>
+                            <ul>
+                                <li><strong>Stress</strong> = Always harmful and negative</li>
+                                <li><strong>Pressure</strong> = Unavoidable and can be beneficial</li>
+                                <li>Whether stress occurs depends on both pressure level AND individual response</li>
+                                <li>Stress is highly personal - everyone responds differently</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Stress</div>
+                            <div class="term-definition">A person's negative reaction to an inappropriate level of pressure.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student feels anxious and exhausted because they have too many exams in one week.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Pressure</div>
+                            <div class="term-definition">The demand or expectation placed on a person, which can be positive or negative.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A deadline motivates an employee to work efficiently.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Response</div>
+                            <div class="term-definition">The way a person reacts to pressure emotionally, mentally, or physically.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">One worker stays calm under pressure, while another becomes overwhelmed.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Coping Resources</div>
+                            <div class="term-definition">The skills, support, and tools used to manage pressure and stress.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Good time management, supportive friends, and exercise help someone cope with stress.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Objective Setting</div>
+                            <div class="term-definition">Setting clear and realistic goals to provide direction.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A teacher sets a goal to prepare one lesson per day instead of trying to do everything at once.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Cognitive Restructuring</div>
+                            <div class="term-definition">Changing negative or unhelpful thoughts to reduce stress.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Thinking "I will try my best" instead of "I must be perfect."</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Boundaries of Responsibility</div>
+                            <div class="term-definition">Knowing what you are responsible for and what is not your duty.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An employee completes their own tasks without taking responsibility for a colleague's work.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. Active Coping</div>
+                            <div class="term-definition">Directly dealing with the source of stress.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Creating a study schedule to prepare for exams.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">9. Passive Coping</div>
+                            <div class="term-definition">Avoiding or escaping from the stress rather than solving it.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Ignoring assignments and spending time on entertainment to forget about stress.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">10. Self-Compassion</div>
+                            <div class="term-definition">Treating yourself with understanding rather than harsh self-criticism.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Accepting a mistake, learning from it, and moving on without blaming yourself.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="chapter" data-chapter="4">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 4: Information Management 📊</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Information management is essential because we receive huge amounts of information daily. Without careful management, it becomes overwhelming and leads to mistakes and stress. The key is being selective and organized.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Information Management</div>
+                            <div class="term-definition">The process of collecting, organizing, storing, retrieving, and disposing of information effectively.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Sorting emails into folders for action, reference, or deletion.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Correspondence</div>
+                            <div class="term-definition">Written communication received or sent within or outside an organization. Two types: external (letters, emails) and internal (emails).</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Emails from colleagues and letters from external agencies.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Routine Matters</div>
+                            <div class="term-definition">Tasks or information that follow standard procedures and require minimal judgment.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Filing a completed attendance form.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Exceptional Matters</div>
+                            <div class="term-definition">Unusual or complex situations that require special attention or individual judgment.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Handling a complaint that doesn't follow normal procedures.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Information Overload</div>
+                            <div class="term-definition">A situation where the amount of information exceeds a person's ability to process it effectively.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Returning from leave to hundreds of unread emails.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Storage</div>
+                            <div class="term-definition">The method of keeping information for future use, either physically or electronically.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Saving documents in labelled folders on a computer.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Retrieval</div>
+                            <div class="term-definition">The ability to locate and access stored information when needed.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Finding a past report quickly using a clear filing system.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. Confidential Information</div>
+                            <div class="term-definition">Information that must be protected from unauthorized access.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Personal records stored in a locked cabinet or password-protected file.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">9. Disposal</div>
+                            <div class="term-definition">The safe and appropriate removal of information that is no longer needed.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Shredding confidential documents.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">10. Selectivity</div>
+                            <div class="term-definition">The skill of choosing which information to read, keep, or ignore.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Skimming newsletters and reading only relevant sections.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">11. Processing Information</div>
+                            <div class="term-definition">Organizing information into categories such as action, pending, or reference.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Adding urgent emails to a task list and saving others for reference.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="chapter" data-chapter="5">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 5: Assertiveness 💪</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Assertiveness is the balance between being submissive (letting others walk over you) and being aggressive (walking over others). It's about expressing yourself honestly while respecting others.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Three Behavioral Styles</h4>
+                            <ul>
+                                <li><strong>Non-assertive (Submissive):</strong> Not expressing needs, saying yes when you mean no</li>
+                                <li><strong>Aggressive:</strong> Disregarding others' needs, generating resentment</li>
+                                <li><strong>Assertive:</strong> Expressing yourself while respecting others</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Jakubowski's 8 Tenets of Assertiveness</h4>
+                            <ul>
+                                <li>Standing up for yourself builds self-respect</li>
+                                <li>Avoiding conflict causes greater harm later</li>
+                                <li>Direct expression helps everyone</li>
+                                <li>Hiding feelings damages relationships</li>
+                                <li>Openness makes relationships genuine</li>
+                                <li>Not expressing feelings is as bad as not listening</li>
+                                <li>Giving up rights encourages others to take advantage</li>
+                                <li>Assertiveness creates respectful relationships</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Assertiveness</div>
+                            <div class="term-definition">Expressing one's thoughts, feelings, and needs honestly and respectfully while respecting others.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Calmly telling a colleague that their late reports affect your work.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Self-Esteem</div>
+                            <div class="term-definition">A person's overall sense of self-worth.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Feeling confident enough to share your opinion in a meeting.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Vicious Circle</div>
+                            <div class="term-definition">A negative cycle where one problem reinforces another.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Low self-esteem → silence → lack of respect → lower self-esteem.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Direct Communication</div>
+                            <div class="term-definition">Clearly expressing thoughts and feelings without hints or manipulation.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Saying "I feel frustrated when deadlines are missed" instead of making sarcastic comments.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Coercion</div>
+                            <div class="term-definition">Trying to control others through pressure, guilt, or intimidation.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Making someone feel guilty to force them to agree.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="chapter" data-chapter="6">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 6: Beating the Bully 🛡️</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Workplace bullying is the misuse of power that causes distress and harm. It has serious consequences including stress, loss of confidence, health problems, and even resignation. Dealing with it requires action at individual, team, organizational, and sometimes legal levels.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Forms of Bullying</h4>
+                            <ul>
+                                <li>Intimidation</li>
+                                <li>Humiliation</li>
+                                <li>Excessive criticism</li>
+                                <li>Discriminatory behavior</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Action Levels</h4>
+                            <ul>
+                                <li><strong>Individual:</strong> Assertive responses</li>
+                                <li><strong>Team:</strong> Support from colleagues</li>
+                                <li><strong>Organization:</strong> Duty of care and policies</li>
+                                <li><strong>Legal:</strong> Remedies when necessary</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Whistle Blowing</div>
+                            <div class="term-definition">Reporting wrongdoing within an organization.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Reporting bullying through a confidential reporting system.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Legal Remedy</div>
+                            <div class="term-definition">Using the law to seek justice or compensation.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Taking a workplace harassment case to court.</div>
+                            </div>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>💡 Important Tips</h4>
+                            <ul>
+                                <li>Keep records of bullying incidents</li>
+                                <li>Seek support - don't face it alone</li>
+                                <li>Don't accept bullying as normal</li>
+                                <li>Know your rights and organization's policies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="chapter" data-chapter="7">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 7: Using Supervision 👥</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Supervision is how organizations support and empower staff to achieve goals. It's not just monitoring - it's about development, support, and problem-solving. Good supervision reduces stress; poor supervision increases it.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 4 Key Elements of Supervision</h4>
+                            <ul>
+                                <li><strong>Accountability:</strong> Ensures work meets standards, provides quality control</li>
+                                <li><strong>Staff Development:</strong> Learning, skill building, overcoming barriers</li>
+                                <li><strong>Staff Care:</strong> Emotional support, stress management, safe space</li>
+                                <li><strong>Mediation:</strong> Managing relationships, resolving conflicts</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>💡 Making the Most of Supervision</h4>
+                            <ul>
+                                <li><strong>Avoid 'macho' attitudes:</strong> Asking for help is not weakness</li>
+                                <li><strong>Don't collude:</strong> Avoid unproductive behaviors</li>
+                                <li><strong>Ensure supervision:</strong> Be proactive in scheduling</li>
+                                <li><strong>Identify needs:</strong> Communicate what you need</li>
+                                <li><strong>Be assertive:</strong> Stand up for your rights respectfully</li>
+                                <li><strong>Use time management:</strong> Allocate time for supervision</li>
+                                <li><strong>Prepare:</strong> Set priorities and plan issues</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Supervision</div>
+                            <div class="term-definition">A structured process through which an organization supports, monitors, and develops staff to achieve goals and maintain quality.</div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. 'Macho' Attitude</div>
+                            <div class="term-definition">A "be tough, do it alone" mindset where refusing help is seen as strength. This blocks effective supervision because supervision requires openness to guidance and support.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A worker refuses to discuss challenges with their supervisor because they think it shows weakness.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="chapter" data-chapter="8">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 8: Being Creative 🎨</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Creativity isn't just for artists - it's a valuable skill in all work. These techniques help develop creative thinking and problem-solving abilities.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Changing Angle</div>
+                            <div class="term-definition">Viewing a situation from a different perspective to gain fresh insights.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Instead of asking "Why is this customer complaining?" ask "What can we learn from this feedback?"</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Developing a Vision</div>
+                            <div class="term-definition">Having clear objectives to guide progress and stimulate creative solutions.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A team visualizes their ideal customer service experience to guide improvements.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Stepping Back</div>
+                            <div class="term-definition">Distancing yourself from a situation to gain perspective and clarity ("see the wood for the trees").</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Taking a break from a difficult project to see the big picture more clearly.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Letting Go</div>
+                            <div class="term-definition">Brainstorming freely without judgment to generate creative ideas, including unusual ones that can inspire solutions.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A team suggests wild ideas like "what if we gave products away free?" to spark creative thinking about pricing strategies.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Provocation</div>
+                            <div class="term-definition">Breaking habitual mental patterns (what-if thinking) to unlock new insights (concept from de Bono).</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"What if we had no office?" might lead to innovative remote work solutions.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 9 -->
+            <div class="chapter" data-chapter="9">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 9: Continuous Professional Development 📈</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>CPD is ongoing learning after formal education. It keeps you effective, up-to-date, and prevents burnout. Learning from experience requires reflection, not just doing the work.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Why CPD Matters</h4>
+                            <ul>
+                                <li><strong>Job satisfaction:</strong> Keeps work interesting</li>
+                                <li><strong>Improved practice:</strong> Better skills and knowledge</li>
+                                <li><strong>Avoiding burnout:</strong> Fresh perspectives prevent stagnation</li>
+                                <li><strong>Personal development:</strong> Growth as a professional</li>
+                                <li><strong>Adventure of theory:</strong> Practice based on knowledge, not guesswork</li>
+                                <li><strong>It's dangerous not to:</strong> "Overlearning" = working mechanically without thinking</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🔄 Kolb's Learning Cycle (4 Stages)</h4>
+                            <ul>
+                                <li><strong>1. Concrete Experience:</strong> Day-to-day work experience</li>
+                                <li><strong>2. Reflective Observation:</strong> Reflecting on what happened</li>
+                                <li><strong>3. Abstract Conceptualization:</strong> Linking to previous learning, forming mini-theories</li>
+                                <li><strong>4. Active Experimentation:</strong> Trying new ideas in practice</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. CPD (Continuous Professional Development)</div>
+                            <div class="term-definition">The ongoing process of learning and improving skills, knowledge, and professional competence after formal education or initial training.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A teacher attends workshops, reads journals, and reflects on teaching methods to improve continuously.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Secondment</div>
+                            <div class="term-definition">Temporary transfer to another job, role, or department to gain new skills and experience.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An HR employee temporarily works in the marketing department for 6 months to learn new skills.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 16 -->
+            <div class="chapter" data-chapter="16">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 16: Influencing Skills 🎯</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Influencing is about persuading others effectively through connection, transparency, solutions, and empathy - not manipulation or force.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Connection</div>
+                            <div class="term-definition">Engaging and forming rapport with others to build a foundation for influence.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Starting a meeting with casual conversation to build trust before presenting ideas.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Putting Cards on the Table</div>
+                            <div class="term-definition">Being open about goals and encouraging transparency to identify common interests.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"My goal is to reduce meeting time. What are your concerns about this?"</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Giving Solutions, Not Problems</div>
+                            <div class="term-definition">Presenting both the problem and a proposed solution to increase effectiveness.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"The reports are late (problem). I suggest we use a shared calendar with reminders (solution)."</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Giving Feedback</div>
+                            <div class="term-definition">Providing positive or constructive criticism tactfully to gain respect and influence.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"Your presentation was clear, and adding more visuals would make it even stronger."</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Speaking the Same Language</div>
+                            <div class="term-definition">Matching language, style, or terminology to the other person for better communication.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Using technical terms with IT staff but simple language with clients.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Dealing with Objections</div>
+                            <div class="term-definition">Identifying and responding to resistance or concerns openly and constructively.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"I understand your concern about cost. Let me show you the long-term savings."</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Listening and Empathy</div>
+                            <div class="term-definition">Actively listening and understanding others' perspectives to build credibility and respect.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">"So you're worried this change will increase your workload. How can we address that?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 18 -->
+            <div class="chapter" data-chapter="18">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 18: Handling Feelings 💝</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Handling feelings is crucial at work but often neglected. Feelings can motivate (accelerators) or demotivate (brakes). Awareness of feelings is essential for effective and safe practice.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Key Differences</h4>
+                            <ul>
+                                <li><strong>Sympathy:</strong> Sharing someone's feelings (if they're sad, you are too)</li>
+                                <li><strong>Empathy:</strong> Recognizing feelings without necessarily feeling them yourself</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Avoid Macho Approach</div>
+                            <div class="term-definition">Repressing emotions or seeing them as a weakness is unhealthy.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Saying "I'm fine" when clearly upset instead of expressing genuine feelings.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Avoid Self-Indulgent Voyeurism</div>
+                            <div class="term-definition">Becoming overly focused on others' feelings for personal satisfaction - enjoying their stories to the point of forgetting your work.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A counselor who asks excessive personal questions out of curiosity rather than to help the client.</div>
+                            </div>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Responding Appropriately to Different Feelings</h4>
+                            <ul>
+                                <li><strong>Loss:</strong> Be present; don't rush advice</li>
+                                <li><strong>Anger:</strong> Choose words carefully to avoid escalation</li>
+                                <li><strong>Guilt:</strong> Offer reassurance; allow time to process</li>
+                                <li><strong>Joy:</strong> Keep perspective without killing enthusiasm</li>
+                                <li><strong>Anxiety:</strong> Help translate general unease into specific fears for action</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Catharsis</div>
+                            <div class="term-definition">A strategy people use to release emotional blockages to regain control and empowerment.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Talking through a traumatic event with a counselor to process and release pent-up emotions.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Avoid Stoic Responses</div>
+                            <div class="term-definition">Repressing feelings leads to wasted energy, stifled problem-solving, and burnout.</div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. Ethos of Permission</div>
+                            <div class="term-definition">Creating a culture where expressing feelings is acceptable and supported.</div>
+                            <div class="framework-box">
+                                <div class="framework-item"><strong>Express your own feelings</strong></div>
+                                <div class="framework-item"><strong>Accept others' expression of feelings</strong></div>
+                                <div class="framework-item"><strong>Offer support when colleagues are distressed</strong></div>
+                                <div class="framework-item"><strong>Include emotions in work discussions</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">9. Counter-Transference</div>
+                            <div class="term-definition">The worker's previous experiences influencing their response to a client, leading to biased or unbalanced treatment.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A social worker being overly protective of a client because they remind them of their own child.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">10. Mirroring</div>
+                            <div class="term-definition">When the emotional dynamics of clients/colleagues are reflected in our own behavior or feelings, often unconsciously.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">If a client avoids discussing emotional issues, the worker may also feel uncomfortable and start avoiding these topics.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">11. Professional Accommodation Syndrome (PAS)</div>
+                            <div class="term-definition">Workers' stress gets worse because their organization responds insensitively to the emotional pressures of the job.</div>
+                            <div class="framework-box">
+                                <div class="framework-item"><strong>Primary Pressure:</strong> Stress from the work itself (e.g., difficult clients)</div>
+                                <div class="framework-item"><strong>Secondary Pressure:</strong> Stress from lack of organizational support (e.g., supervisors ignoring emotional issues)</div>
+                            </div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A nurse dealing with patient deaths (primary pressure) receives no emotional support from management (secondary pressure), leading to burnout.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 21 -->
+            <div class="chapter" data-chapter="21">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 21: Anti-Discriminatory Practice ⚖️</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Understanding different forms of discrimination and unfair treatment helps us create more equitable workplaces and societies. These concepts explain how discrimination operates.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Oppression</div>
+                            <div class="term-definition">Long-term and systematic unfair treatment of people or groups, usually based on social characteristics like race, gender, or class.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">In a workplace where women are consistently paid less than men for the same role, women are experiencing oppression.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Marginalisation</div>
+                            <div class="term-definition">When certain people or groups are pushed to the edges of society, limiting their access to resources, opportunities, or rights.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Homeless individuals who cannot access healthcare or education due to societal barriers are marginalized.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Group Closure</div>
+                            <div class="term-definition">When a group deliberately restricts membership or participation to certain people, often excluding others based on identity.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An English school that only hires graduates from IFL practices group closure.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Stereotyping</div>
+                            <div class="term-definition">Assigning broad, often inaccurate characteristics to people based on their identity or appearance.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Assuming that all elderly people are bad with technology is a form of stereotyping.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Stigmatisation</div>
+                            <div class="term-definition">Labeling someone or a group negatively, which can lead to social rejection or discrimination.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">People with physical disabilities being treated as "incapable" or "less competent" are stigmatized.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Scapegoating</div>
+                            <div class="term-definition">Blaming an individual or group for problems that are not their fault, often to divert attention from the real causes.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Blaming a single employee for a company's declining sales, when management decisions are the real cause.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">7. Resentment</div>
+                            <div class="term-definition">Feeling bitter or angry toward someone or something seen as unfair.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student might feel resentment toward a teacher who favors certain students.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">8. Mystification</div>
+                            <div class="term-definition">Making something confusing or complex to prevent people from understanding it, often to retain control.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A company using overly technical jargon in contracts to make it hard for customers to fully understand the terms.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">9. Short-Lived Success</div>
+                            <div class="term-definition">Achieving a goal temporarily, but not maintaining it over time.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A new restaurant that attracts crowds for a few months but quickly loses popularity experiences short-lived success.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">10. Group Influence</div>
+                            <div class="term-definition">The way people's attitudes, beliefs, or behaviors are shaped by the group they belong to or interact with.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A student who starts studying more regularly because their friends are highly disciplined is experiencing group influence.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 22 -->
+            <div class="chapter" data-chapter="22">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 22: Being Systematic 📋</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Being systematic means having clear, measurable, and achievable plans. It prevents drift and vagueness that waste time and resources.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Drift</div>
+                            <div class="term-definition">A slow, unplanned change in direction or focus over time.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A school curriculum may drift from its original purpose if teachers gradually add content without reviewing the overall objectives.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Vagueness</div>
+                            <div class="term-definition">When something is unclear, imprecise, or lacks detail.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A supervisor saying "do better next time" without specifying what to improve is being vague.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Measurability</div>
+                            <div class="term-definition">The ability to evaluate or quantify something clearly using specific criteria.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">The success of a fitness program can be measured by the number of participants who meet their target weight or fitness goals.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Achievability</div>
+                            <div class="term-definition">How realistic it is to reach a goal, considering resources, constraints, and time.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Setting a goal to run a marathon in a week without training is not achievable, but planning for a marathon in six months is realistic.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 23 -->
+            <div class="chapter" data-chapter="23">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 23: Assessment 📝</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Assessment is the preparatory stage that establishes firm ground for later helping processes. It guides intervention, review, evaluation, and ending decisions.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Assessment's Role In:</h4>
+                            <ul>
+                                <li><strong>Intervention:</strong> Acts as basis for action plan, sets objectives</li>
+                                <li><strong>Review and Evaluation:</strong> Becomes baseline for measuring progress</li>
+                                <li><strong>Ending:</strong> Helps determine when objectives are met and intervention can close</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Powers</div>
+                            <div class="term-definition">What workers are empowered to do in certain circumstances.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A social worker has the power to recommend family support services.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Duties</div>
+                            <div class="term-definition">What workers must do in certain circumstances.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Teachers have a duty to report suspected child abuse.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Restrictions</div>
+                            <div class="term-definition">Limitations on what workers are allowed to do.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A counselor cannot share client information without consent (restriction).</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Paternalism</div>
+                            <div class="term-definition">Managing or controlling others in a way that restricts their freedom for their own perceived good.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A company adopts paternalistic policies by making health benefit decisions for employees without consulting them.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. Confidentiality</div>
+                            <div class="term-definition">Keeping information private and ensuring it's not shared with unauthorized individuals.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Medical records kept secure and only shared with authorized healthcare providers.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">6. Frozen Watchfulness</div>
+                            <div class="term-definition">A state of vigilant but passive observation where individuals wait without acting, often due to uncertainty or lack of confidence.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">During a crisis, employees demonstrate frozen watchfulness by hesitating to take action while awaiting instructions from higher-ups.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 24 -->
+            <div class="chapter" data-chapter="24">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 24: Planning 📅</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Everyone needs planning in life to avoid drift or loss of purpose. Planning should be flexible and incremental since we adjust our goals along the way.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">The Life Course</div>
+                            <div class="term-definition">The stages and experiences individuals go through in their lives, from birth to death, influenced by social, cultural, and historical factors.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">The life course includes different phases like childhood, adolescence, adulthood, and old age, each with distinct milestones and challenges.</div>
+                            </div>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>💡 Key Planning Principles</h4>
+                            <ul>
+                                <li>Plans should be <strong>flexible</strong> - life changes</li>
+                                <li>Plans should be <strong>incremental</strong> - build step by step</li>
+                                <li>Regular review and adjustment are essential</li>
+                                <li>Consider life course stage and context</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 26 -->
+            <div class="chapter" data-chapter="26">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 26: Managing Risk ⚠️</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Managing risk involves finding the balance between being too cautious (paranoid) and too careless (naive). Different strategies help manage different types of risks.</p>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Avoidance</div>
+                            <div class="term-definition">Deliberately steering clear of actions that might involve risk or unwanted outcomes.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A school might avoid introducing a new software system until teachers are fully trained to prevent confusion or errors.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Elimination</div>
+                            <div class="term-definition">Completely removing a risk or hazard from a situation.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A factory replacing slippery floors with anti-slip surfaces eliminates the risk of employee falls.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">3. Naivety</div>
+                            <div class="term-definition">A lack of experience or judgment that leads to overly simple or unrealistic thinking.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A new driver might show naivety by assuming they can drive safely in heavy rain without reducing speed.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">4. Paranoia</div>
+                            <div class="term-definition">An irrational feeling that others are plotting against you or threatening you, without real evidence.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">An employee might feel paranoia if they think everyone is trying to get them fired, even though there's no proof.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">5. The Contingency of Being</div>
+                            <div class="term-definition">Life's unpredictability, where outcomes are often shaped by chance or unforeseen events.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">The contingency of being can be seen when someone unexpectedly inherits a property that changes their life plans.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 27 -->
+            <div class="chapter" data-chapter="27">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 27: Review and Evaluation 🔍</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>This chapter is similar to Assessment (Chapter 23). Review and evaluation measure progress against the baseline established during assessment, checking if objectives are being met.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Key Points</h4>
+                            <ul>
+                                <li>Review checks current progress</li>
+                                <li>Evaluation measures effectiveness</li>
+                                <li>Both use assessment as baseline</li>
+                                <li>Help determine if intervention should continue or end</li>
+                                <li>Regular review prevents drift</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 28 -->
+            <div class="chapter" data-chapter="28">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 28: Ending 🏁</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>Once intervention is done, it's important to know when to stop providing help. Proper ending is essential for several reasons.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Why Practice Ending?</h4>
+                            <ul>
+                                <li><strong>Manage workload:</strong> Frees up time and resources for new cases</li>
+                                <li><strong>Avoid labelling:</strong> Prevents people from becoming dependent or being labeled as "needing help"</li>
+                                <li><strong>Receive job satisfaction:</strong> Completing cases successfully is rewarding</li>
+                                <li><strong>Smooth transfer:</strong> Ensures proper handover to relevant stakeholders if needed</li>
+                            </ul>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>💡 Good Ending Practice</h4>
+                            <ul>
+                                <li>Plan endings from the beginning</li>
+                                <li>Prepare clients/stakeholders for ending</li>
+                                <li>Review achievements and learning</li>
+                                <li>Ensure sustainability of changes</li>
+                                <li>Provide clear referrals if needed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 29 -->
+            <div class="chapter" data-chapter="29">
+                <div class="chapter-header" onclick="toggleChapter(this)">
+                    <span class="chapter-title">Chapter 29: Responding to Trauma 🆘</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="chapter-content">
+                    <div class="chapter-body">
+                        <div class="summary">
+                            <h3>Quick Summary</h3>
+                            <p>When dealing with trauma, three key principles guide effective and safe practice: understanding personal meaning, working together for mutual support, and not getting overwhelmed.</p>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>🎯 Three Key Principles</h4>
+                            <ul>
+                                <li><strong>1. Tuning in to meaning:</strong> Understand personal significance people attach to experiences; use storytelling to help them make sense</li>
+                                <li><strong>2. Working together:</strong> Provide mutual support among helpers; trauma creates powerlessness that spreads</li>
+                                <li><strong>3. Not getting out of our depth:</strong> Be prepared through training; don't take on more than you can handle; use teamwork</li>
+                            </ul>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">1. Retraumatisation</div>
+                            <div class="term-definition">When talking about a trauma triggers more distress.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">Asking a survivor to relive a car accident too soon can cause panic.</div>
+                            </div>
+                        </div>
+
+                        <div class="term">
+                            <div class="term-name">2. Secondary Traumatisation</div>
+                            <div class="term-definition">When people close to or helping the trauma survivor experience trauma-like effects.</div>
+                            <div class="example">
+                                <div class="example-label">📖 Example:</div>
+                                <div class="example-text">A social worker supporting abuse victims may feel anxious or exhausted over time.</div>
+                            </div>
+                        </div>
+
+                        <div class="key-points">
+                            <h4>💡 Best Practices</h4>
+                            <ul>
+                                <li>Listen to survivors' stories with empathy</li>
+                                <li>Don't force people to share before they're ready</li>
+                                <li>Provide support for helpers too</li>
+                                <li>Get proper training before trauma work</li>
+                                <li>Work as a team, never alone</li>
+                                <li>Recognize signs of secondary trauma in yourself</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Toggle chapter content
+        function toggleChapter(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            content.classList.toggle('active');
+            icon.textContent = content.classList.contains('active') ? '−' : '+';
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const chapters = document.querySelectorAll('.chapter');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let hasResults = false;
+
+            chapters.forEach(chapter => {
+                const content = chapter.textContent.toLowerCase();
+                if (content.includes(searchTerm)) {
+                    chapter.style.display = 'block';
+                    hasResults = true;
+                    
+                    // Auto-expand if searching
+                    if (searchTerm.length > 0) {
+                        const chapterContent = chapter.querySelector('.chapter-content');
+                        const icon = chapter.querySelector('.toggle-icon');
+                        chapterContent.classList.add('active');
+                        icon.textContent = '−';
+                    }
+                } else {
+                    chapter.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            let noResults = document.getElementById('noResults');
+            if (!hasResults && searchTerm.length > 0) {
+                if (!noResults) {
+                    noResults = document.createElement('div');
+                    noResults.id = 'noResults';
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No results found. Try different keywords.';
+                    document.getElementById('chaptersContainer').appendChild(noResults);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (winScroll > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + F to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to clear search
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('input'));
+            }
+        });
+
+        // Highlight search terms
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            // Remove previous highlights
+            document.querySelectorAll('.highlight').forEach(el => {
+                const text = el.textContent;
+                el.replaceWith(text);
+            });
+
+            if (searchTerm.length > 2) {
+                chapters.forEach(chapter => {
+                    if (chapter.style.display !== 'none') {
+                        highlightText(chapter, searchTerm);
+                    }
+                });
+            }
+        });
+
+        function highlightText(element, searchTerm) {
+            const textNodes = getTextNodes(element);
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const index = text.toLowerCase().indexOf(searchTerm);
+                if (index >= 0) {
+                    const before = text.substring(0, index);
+                    const match = text.substring(index, index + searchTerm.length);
+                    const after = text.substring(index + searchTerm.length);
+                    
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    span.textContent = match;
+                    
+                    const fragment = document.createDocumentFragment();
+                    fragment.appendChild(document.createTextNode(before));
+                    fragment.appendChild(span);
+                    fragment.appendChild(document.createTextNode(after));
+                    
+                    node.parentNode.replaceChild(fragment, node);
+                }
+            });
+        }
+
+        function getTextNodes(node) {
+            const textNodes = [];
+            const walk = document.createTreeWalker(
+                node,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: function(node) {
+                        if (node.parentElement.classList.contains('chapter-header') ||
+                            node.parentElement.classList.contains('search-input')) {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                }
+            );
+            
+            let textNode;
+            while (textNode = walk.nextNode()) {
+                textNodes.push(textNode);
+            }
+            return textNodes;
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
